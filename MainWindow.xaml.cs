@@ -45,11 +45,12 @@ namespace DeweyDecimalTrainingApp
             correctOrder.Clear();
             CallNumbersListBox.Items.Clear();
 
-            // Generate and display 10 random call numbers (replace with your own logic)
             Random random = new Random();
             for (int i = 0; i < 10; i++)
             {
-                string callNumber = $"{random.Next(1000, 10000):D4}.{random.Next(100):D2}";
+                string topic = $"{random.Next(100, 999):D3}";
+                string author = GenerateRandomAuthorName(random);
+                string callNumber = $"{topic} {author}";
                 callNumbers.Add(callNumber);
                 correctOrder.Add(callNumber);
             }
@@ -66,6 +67,14 @@ namespace DeweyDecimalTrainingApp
             // Shuffle the call numbers for user interaction
             ShuffleCallNumbers();
         }
+
+        private string GenerateRandomAuthorName(Random random)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, 3)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
 
         private void BubbleSort(List<string> list)
         {

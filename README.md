@@ -2,7 +2,8 @@
 
 The Dewey Decimal Classification Training App is a user-friendly application designed to help individuals practice sorting call numbers according to the Dewey Decimal Classification system. This application is intended for use in library science education or for anyone interested in gaining a deeper understanding of how call numbers function in library organization.
 
-![App Screenshot](screenshot.png)
+![App Screenshot](![image](https://github.com/Thakshin4/LibraryDeweyDecimal/assets/69991863/0892bbfc-3b3b-4bb7-ac10-6c0f2abfe8ea)
+)
 
 ## Features
 

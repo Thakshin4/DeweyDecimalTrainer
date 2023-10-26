@@ -1,27 +1,25 @@
 # Dewey Decimal Classification Training App
 
-The Dewey Decimal Classification Training App is a simple application designed to help users practice sorting call numbers in the Dewey Decimal Classification system. It is intended for use in library science education or for anyone interested in understanding how call numbers work.
+The Dewey Decimal Classification Training App is a user-friendly application designed to help individuals practice sorting call numbers according to the Dewey Decimal Classification system. This application is intended for use in library science education or for anyone interested in gaining a deeper understanding of how call numbers function in library organization.
 
 ![App Screenshot](screenshot.png)
 
 ## Features
 
-- **Training Tasks**: The app offers various training tasks, including "Replacing Books," "Identifying Areas," and "Finding Call Numbers."
+- **Training Tasks**: The app offers a variety of training tasks, including "Replacing Books," "Identifying Areas," and "Finding Call Numbers," each designed to help users enhance their sorting skills.
 
-- **Drag-and-Drop**: Users can drag and drop call numbers to practice sorting them in the correct order.
+- **Drag-and-Drop**: Users can engage in interactive sorting by dragging and dropping call numbers to practice getting them in the correct order.
 
-- **Check Order**: A "Check Order" button allows users to validate their sorting results and earn points for correct sorting.
-
-- **Gamification**: The app incorporates gamification features to make the learning experience more engaging and enjoyable.
+- **Gamification**: The app incorporates a timer to record users' best times for each training exercise, adding a competitive and motivational element to the training process.
 
 ## Getting Started
 
-Follow these steps to get the Dewey Decimal Classification Training App up and running on your system.
+Follow these steps to quickly set up and run the Dewey Decimal Classification Training App on your system.
 
 ### Prerequisites
 
-- Windows operating system
-- Visual Studio with C# development tools
+- A Windows operating system is required to run this application.
+- You will need Visual Studio with C# development tools to build and run the application.
 
 ### Installation
 
@@ -31,26 +29,28 @@ Follow these steps to get the Dewey Decimal Classification Training App up and r
 
 3. Build and run the application.
 
-4. Start your training by clicking on the "Start Training" button.
+4. To initiate your training, simply click the "Start Training" button.
 
 ## Usage
 
-- Click the "Start Training" button to begin your training session.
+- From the menu, choose your desired training exercise.
 
-- Drag and drop the call numbers in the correct order.
+- Click the "Start" button to commence your training session.
 
-- Click the "Check Order" button to verify your sorting and earn points.
+- Use the drag-and-drop functionality to rearrange the call numbers into the correct order.
+
+- Aim to improve your best time with each practice.
 
 ## Gamification Features
 
-This app incorporates gamification to enhance the learning experience. Gamification features include:
+This app employs gamification techniques to make the learning experience more engaging and enjoyable. The gamification features include:
 
-- Points System: Earn points for correctly sorted call numbers.
+- **Timer**: Challenge yourself to achieve your best time while sorting call numbers. The app records your time to encourage improvement.
 
-- Rewards: Get positive feedback for accurate sorting.
+- **Rewards**: Receive positive feedback and validation for accurately sorting call numbers, motivating you to continue practicing.
 
 ## Acknowledgments
 
-- The Dewey Decimal Classification system is a widely used library classification system developed by Melvil Dewey.
+- The Dewey Decimal Classification system, developed by Melvil Dewey, is one of the most widely used library classification systems globally, and this app aims to make it more accessible for learners.
 
-- The app design and development were inspired by the need for interactive tools in library science education.
+- The design and development of this app were inspired by the growing need for interactive tools in the field of library science education, offering an innovative way to practice and learn about the Dewey Decimal Classification system.

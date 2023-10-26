@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace LibraryDeweyDecimalApp.MVVM.View
 {
@@ -22,25 +25,56 @@ namespace LibraryDeweyDecimalApp.MVVM.View
     {
         private List<string> callNumbers;
         private List<string> correctOrder;
-        private int points;
 
         private bool isDragging = false;
         private string itemBeingDragged = null;
+
+        // Define the timer
+        private DispatcherTimer timer;
+        private TimeSpan elapsedTime;
 
         public ReplacingBooksView()
         {
             InitializeComponent();
             callNumbers = new List<string>();
             correctOrder = new List<string>();
-            points = 0;
 
             // Enable drag-and-drop
             CallNumbersListBox.PreviewMouseLeftButtonDown += ListBox_PreviewMouseLeftButtonDown;
             CallNumbersListBox.MouseMove += ListBox_MouseMove;
             CallNumbersListBox.Drop += ListBox_Drop;
-            GenerateCallNumbers();
 
+            // Initialize the timer
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+            elapsedTime = TimeSpan.Zero;
         }
+
+        private void InitializeTimer()
+        {
+            // Initialize the timer
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+            elapsedTime = TimeSpan.Zero;
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            GenerateCallNumbers();
+            CheckButton.Visibility= Visibility.Visible;
+
+            // Initialize the timer
+            InitializeTimer();
+            timer.Start();
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime = elapsedTime.Add(TimeSpan.FromMilliseconds(100)); // Update elapsed time
+            TimerLabel.Content = $"{elapsedTime.Minutes:D2}:{elapsedTime.Seconds:D2}.{elapsedTime.Milliseconds:D3}";
+        }
+
 
         private void GenerateCallNumbers()
         {
@@ -132,23 +166,25 @@ namespace LibraryDeweyDecimalApp.MVVM.View
             if (isCorrect)
             {
                 MessageBox.Show("Congratulations! You sorted the call numbers correctly.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                points += 10;
-                PointsLabel.Content = points.ToString();
+                timer.Stop();
+                SaveTime();
                 GenerateCallNumbers(); // Generate a new set of call numbers
             }
             else
             {
                 MessageBox.Show("Oops! Your sorting is incorrect. Try again.", "Incorrect", MessageBoxButton.OK, MessageBoxImage.Error);
-                points -= 10;
-                if (points < 10)
-                {
-                    points = 0;
-                }
-                PointsLabel.Content = points.ToString();
             }
         }
 
-        private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SaveTime()
+        {
+            // Write the time to a text file
+            string elapsedTimeString = TimerLabel.Content.ToString();
+            string filePath = "ReplacingBooksTimes.txt"; // Adjust the file path as needed
+            File.AppendAllLines(filePath, new[] { elapsedTimeString });
+        }
+
+            private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = sender as ListBox;
 

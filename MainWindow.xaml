@@ -56,6 +56,12 @@
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Times"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding TimesViewCommand}"/>
             </StackPanel>
 
             <ContentControl Grid.Row="1"

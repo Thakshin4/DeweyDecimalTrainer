@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace LibraryDeweyDecimalApp.MVVM.View
 {
@@ -12,8 +15,12 @@ namespace LibraryDeweyDecimalApp.MVVM.View
         private List<string> selectedCallNumbers;
         private List<string> shuffledDescriptions;
         private int currentQuestionIndex;
+
         private bool swap;
-        private int points;
+
+        // Define the timer
+        private DispatcherTimer timer;
+        private TimeSpan elapsedTime;
 
         public IdentifyingAreasView()
         {
@@ -23,11 +30,39 @@ namespace LibraryDeweyDecimalApp.MVVM.View
             selectedCallNumbers = new List<string>();
             shuffledDescriptions = new List<string>();
             swap = false;
-            points = 0;
+
+            // Initialize the timer
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+            elapsedTime = TimeSpan.Zero;
 
             InitializeData();
+        }
+
+        private void InitializeTimer()
+        {
+            // Initialize the timer
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+            elapsedTime = TimeSpan.Zero;
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
             LoadQuestion(0);
-            NextQuestionButton.IsEnabled = false;
+            SubmitButton.Visibility = Visibility.Visible;
+
+            // Initialize the timer
+            InitializeTimer();
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime = elapsedTime.Add(TimeSpan.FromMilliseconds(100)); // Update elapsed time
+            TimerLabel.Content = $"{elapsedTime.Minutes:D2}:{elapsedTime.Seconds:D2}.{elapsedTime.Milliseconds:D3}";
         }
 
         private void InitializeData()
@@ -101,8 +136,6 @@ namespace LibraryDeweyDecimalApp.MVVM.View
                 {
                     // Correct answer
                     MessageBox.Show("Correct!", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
-                    points += 10;
-                    PointsLabel.Content = points.ToString();
 
                     // Remove the correct answer from the lists
                     selectedCallNumbers.Remove(correctCallNumber);
@@ -112,11 +145,14 @@ namespace LibraryDeweyDecimalApp.MVVM.View
                     {
                         // All questions are answered or one of the lists is empty, prompt the user to move to the next question
                         MessageBox.Show("Congratulations! You've completed the questions. Click Next Question to continue.", "Question Completed", MessageBoxButton.OK, MessageBoxImage.Information);
-                        NextQuestionButton.IsEnabled = true;
+                        NextQuestionButton.Visibility = Visibility.Visible;
+
+                        timer.Stop();
+                        SaveTime();
                     }
 
                     // Update the ListBox contents after removal
-            UpdateListBoxContents();
+                    UpdateListBoxContents();
                 }
                 else
                 {
@@ -124,6 +160,14 @@ namespace LibraryDeweyDecimalApp.MVVM.View
                     MessageBox.Show("Incorrect!", "Result", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void SaveTime()
+        {
+            // Write the time to a text file
+            string elapsedTimeString = TimerLabel.Content.ToString();
+            string filePath = "IdentifyingAreasTimes.txt"; // Adjust the file path as needed
+            File.AppendAllLines(filePath, new[] { elapsedTimeString });
         }
 
         private void UpdateListBoxContents()
@@ -150,12 +194,12 @@ namespace LibraryDeweyDecimalApp.MVVM.View
             if (currentQuestionIndex < callNumbersAndDescriptions.Count)
             {
                 LoadQuestion(currentQuestionIndex);
+                NextQuestionButton.Visibility = Visibility.Collapsed;
             }
             else
             {
                 MessageBox.Show("All questions have been completed. Congratulations!", "All Questions Completed", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-
     }
 }

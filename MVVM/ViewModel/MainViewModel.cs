@@ -13,12 +13,15 @@ namespace LibraryDeweyDecimalApp.MVVM.ViewModel
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand ReplacingBooksViewCommand { get; set; }
         public RelayCommand IdentifyingAreasViewCommand { get; set; }
+        public RelayCommand TimesViewCommand { get; set; }
 
 
         // -----
         public HomeViewModel HomeVM { get; set; }
         public ReplacingBooksViewModel ReplacingBooksVM { get; set; }
         public IdentifyingAreasViewModel IdentifyingAreasVM { get; set; }
+        public TimesViewModel TimesVM { get; set; }
+
 
 
         //
@@ -41,6 +44,8 @@ namespace LibraryDeweyDecimalApp.MVVM.ViewModel
             HomeVM = new HomeViewModel();
             ReplacingBooksVM = new ReplacingBooksViewModel();
             IdentifyingAreasVM = new IdentifyingAreasViewModel();
+            TimesVM = new TimesViewModel();
+
 
 
             //
@@ -60,6 +65,10 @@ namespace LibraryDeweyDecimalApp.MVVM.ViewModel
             IdentifyingAreasViewCommand = new RelayCommand(o =>
             {
                 CurrentView = IdentifyingAreasVM;
+            });
+            TimesViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = TimesVM;
             });
         }
     }

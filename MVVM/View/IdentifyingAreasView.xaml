@@ -8,10 +8,9 @@
     <Grid>
         <!-- Grid layout for matching columns -->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
-                <!-- Points Label -->
-                <Label Content="Points:" Foreground="White"/>
-                <Label x:Name="PointsLabel" Content="0" Foreground="White"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <Label Content="Elapsed Time:" Foreground="White"/>
+                <Label x:Name="TimerLabel" Content="00:00:00" Foreground="White"/>
             </StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -54,13 +53,30 @@
             </Grid>
             <!-- Buttons for user actions -->
             <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Content="Submit" 
-                        Click="SubmitButton_Click" 
+                <!-- Start Button -->
+                <Button x:Name="StartButton" 
+                        Content="Start" 
+                        Click="StartButton_Click" 
                         Foreground="White"
                         Background="#A3333D"
                         Margin="10" 
                         Padding="5"
                         BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="SubmitButton" 
+                        Content="Submit" 
+                        Click="SubmitButton_Click" 
+                        Foreground="White"
+                        Background="#A3333D"
+                        Margin="10" 
+                        Padding="5"
+                        BorderThickness="0"
+                        Visibility="Collapsed">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="8"/>
@@ -75,7 +91,8 @@
                         Background="#A3333D"
                         Margin="10" 
                         Padding="5"
-                        BorderThickness="0">   
+                        BorderThickness="0"
+                        Visibility="Collapsed">   
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="8"/>

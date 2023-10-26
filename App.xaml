@@ -24,6 +24,10 @@
                 <view:IdentifyingAreasView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:TimesViewModel}">
+                <view:TimesView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

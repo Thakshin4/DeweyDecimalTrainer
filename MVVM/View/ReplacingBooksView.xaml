@@ -7,12 +7,10 @@
              mc:Ignorable="d">
     <Grid>
         <StackPanel VerticalAlignment="Center" Margin="10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-                <!-- Points Label -->
-                <Label Content="Points:" Foreground="White"/>
-                <Label x:Name="PointsLabel" Content="0" Foreground="White"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <Label Content="Elapsed Time:" Foreground="White"/>
+                <Label x:Name="TimerLabel" Content="00:00:00" Foreground="White"/>
             </StackPanel>
-
             <!-- Call Numbers List Box -->
             <ListBox x:Name="CallNumbersListBox" 
                      Width="300" 
@@ -26,13 +24,29 @@
                      Margin="0,10"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <!-- Start Button -->
+                <Button x:Name="StartButton" 
+                        Content="Start" 
+                        Click="StartButton_Click" 
+                        Foreground="White"
+                        Background="#A3333D"
+                        Margin="10" 
+                        Padding="5"
+                        BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <!-- Check Order Button -->
-                <Button Content="Check Order" 
+                <Button x:Name="CheckButton" Content="Check Order" 
                         Foreground="White"
                         Background="#A3333D"
                         Margin="10" 
                         Padding="5"
                         BorderThickness="0"
+                        Visibility="Collapsed"
                         Click="CheckButton_Click">
                     <Button.Resources>
                         <Style TargetType="Border">

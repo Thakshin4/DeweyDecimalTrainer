@@ -12,8 +12,8 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
-    <Border Background="#272537"
+
+    <Border Background="#212129"
         CornerRadius="8">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -31,13 +31,19 @@
                        FontSize="22"
                        Margin="20,0,0,0"/>
             <StackPanel Grid.Row="1">
-                
+
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HomeViewCommand}"
+                             IsChecked="True"/>
                 <RadioButton Content="Replacing Books"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
                              Command="{Binding ReplacingBooksViewCommand}"/>
                 <RadioButton Content="Identifying Areas"
                              Height="50"

@@ -38,11 +38,8 @@ namespace LibraryDeweyDecimalApp.MVVM.View
             CallNumbersListBox.PreviewMouseLeftButtonDown += ListBox_PreviewMouseLeftButtonDown;
             CallNumbersListBox.MouseMove += ListBox_MouseMove;
             CallNumbersListBox.Drop += ListBox_Drop;
-        }
-
-        private void StartButton_Click(object sender, RoutedEventArgs e)
-        {
             GenerateCallNumbers();
+
         }
 
         private void GenerateCallNumbers()

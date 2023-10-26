@@ -7,33 +7,82 @@
              mc:Ignorable="d">
     <Grid>
         <!-- Grid layout for matching columns -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- Left Column: Call Numbers -->
-            <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                <TextBlock Text="Match the Call Numbers:" FontWeight="Bold"/>
-                <ListBox x:Name="CallNumbersList" Height="200" Width="100">
-                    <!-- Call numbers will be displayed here -->
-                </ListBox>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
+                <!-- Points Label -->
+                <Label Content="Points:" Foreground="White"/>
+                <Label x:Name="PointsLabel" Content="0" Foreground="White"/>
             </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Right Column: Descriptions -->
-            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBlock Text="Match the Descriptions:" FontWeight="Bold"/>
-                <ListBox x:Name="DescriptionsList" Height="200" Width="300">
-                    <!-- Descriptions will be displayed here -->
-                </ListBox>
+                <!-- Left Column: Call Numbers -->
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="Match the Call Numbers:"
+                               Foreground="White"
+                               Margin="20, 0, 0, 0"/>
+                    <ListBox x:Name="CallNumbersList" 
+                         Height="200" Width="200"
+                         Background="#2e3746"
+                         Foreground="White"
+                         BorderThickness="0"
+                         HorizontalAlignment="Left"
+                         Margin="20">
+                        <!-- Call numbers will be displayed here -->
+                    </ListBox>
+                </StackPanel>
+
+                <!-- Right Column: Descriptions -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Match the Descriptions:"
+                               Foreground="White"
+                               Margin="20, 0, 0, 0"/>
+                    <ListBox x:Name="DescriptionsList" 
+                         Height="200" Width="200"
+                         Background="#2e3746"
+                         Foreground="White"
+                         BorderThickness="0"
+                         HorizontalAlignment="Left"
+                         Margin="20">
+                        <!-- Descriptions will be displayed here -->
+                    </ListBox>
+                </StackPanel>
+
+            </Grid>
+            <!-- Buttons for user actions -->
+            <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Submit" 
+                        Click="SubmitButton_Click" 
+                        Foreground="White"
+                        Background="#A3333D"
+                        Margin="10" 
+                        Padding="5"
+                        BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button x:Name="NextQuestionButton"
+                        Content="Next Question" 
+                        Click="NextQuestionButton_Click" 
+                        Foreground="White"
+                        Background="#A3333D"
+                        Margin="10" 
+                        Padding="5"
+                        BorderThickness="0">   
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
-        </Grid>
-
-        <!-- Buttons for user actions -->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button Content="Submit" Click="SubmitButton_Click" Margin="10"/>
-            <Button Content="Next Question" Click="NextQuestionButton_Click" Margin="10"/>
         </StackPanel>
     </Grid>
 </UserControl>

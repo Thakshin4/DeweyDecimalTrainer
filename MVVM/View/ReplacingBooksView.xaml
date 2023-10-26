@@ -21,30 +21,15 @@
                      VerticalAlignment="Center" 
                      AllowDrop="True" 
                      BorderThickness="0"
-                     Background="#272727"
+                     Background="#2e3746"
                      Foreground="White"
                      Margin="0,10"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <!-- Start Button -->
-                <Button x:Name="StartButton" 
-                        Content="Start Training" 
-                        Click="StartButton_Click" 
-                        Foreground="White"
-                        Background="Crimson"
-                        Margin="10" 
-                        Padding="5"
-                        BorderThickness="0">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="8"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
                 <!-- Check Order Button -->
                 <Button Content="Check Order" 
                         Foreground="White"
-                        Background="Crimson"
+                        Background="#A3333D"
                         Margin="10" 
                         Padding="5"
                         BorderThickness="0"

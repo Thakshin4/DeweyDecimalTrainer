@@ -26,7 +26,7 @@ namespace LibraryDeweyDecimalApp.MVVM.View
             {
                 // Load Dewey Decimal data
                 DeweyDecimalLibrary libraryReader = new DeweyDecimalLibrary();
-                deweyLibrary = libraryReader.ReadDeweyData("DeweyData.json");
+                deweyLibrary = libraryReader.ReadDeweyData("Data/DeweyData.json");
 
                 if (deweyLibrary == null)
                 {

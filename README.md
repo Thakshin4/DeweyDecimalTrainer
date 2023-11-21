@@ -19,6 +19,8 @@ The Dewey Decimal Classification Training App is a user-friendly application des
 ### Version 1.3.0
 
 - Added "Finding Call Numbers" feature for advanced users.
+- Updated Call Number format in Replacing Books.
+- Changes made to Identifying Areas.
 - Minor bugfixes and visual changes.
 
 ## Getting Started
@@ -38,7 +40,7 @@ Follow these steps to quickly set up and run the Dewey Decimal Classification Tr
 
 3. Build and run the application.
 
-4. To initiate your training, simply click the "Start Training" button.
+4. To initiate your training, simply click the "Start" button.
 
 ## Usage
 

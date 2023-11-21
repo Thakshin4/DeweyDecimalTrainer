@@ -57,6 +57,7 @@
                 <Button x:Name="StartButton" 
                         Content="Start" 
                         Click="StartButton_Click" 
+                        Width="100"
                         Foreground="White"
                         Background="#A3333D"
                         Margin="10" 

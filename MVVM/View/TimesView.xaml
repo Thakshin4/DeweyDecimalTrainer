@@ -10,6 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Replacing Books Best Times" Grid.Column="0"  Margin="20" HorizontalAlignment="Center" Foreground="White"/>
        
@@ -36,5 +37,17 @@
                  BorderThickness="0"
                  Background="#2e3746"
                  Foreground="White"/>
+        <Label Content="Finding Call Numbers Best Times" Grid.Column="2"  Margin="20" HorizontalAlignment="Center" Foreground="White"/>
+
+        <ListBox x:Name="FindingCallNumbersList" 
+         Grid.Column="2" 
+         HorizontalAlignment="Stretch" 
+         VerticalAlignment="Stretch"
+         Width="200" 
+         Height="300" 
+         AllowDrop="True" 
+         BorderThickness="0"
+         Background="#2e3746"
+         Foreground="White"/>
     </Grid>
 </UserControl>

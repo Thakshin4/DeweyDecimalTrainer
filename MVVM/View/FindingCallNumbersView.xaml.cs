@@ -1,25 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using static LibraryDeweyDecimalApp.DeweyDecimalLibrary;
 
 namespace LibraryDeweyDecimalApp.MVVM.View
 {
     public partial class FindingCallNumbersView : UserControl
     {
+        // Define the timer
+        private DispatcherTimer timer;
+        private TimeSpan elapsedTime;
+
         private int quizCount = 0;
         private int level = 1;
+
         private DeweyDecimalLibrary deweyLibrary;
         private Dictionary<string, string> answerPair = new Dictionary<string, string>();
 
         public FindingCallNumbersView()
         {
             InitializeComponent();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            RandomDescriptionLabel.Visibility = Visibility.Visible;
+            Option1.Visibility = Visibility.Visible;
+            Option2.Visibility = Visibility.Visible;
+            Option3.Visibility = Visibility.Visible;
+            Option4.Visibility = Visibility.Visible;
+
             LoadDeweyData();
             InitializeQuizOptions(level);
+
+            // Initialize the timer
+            InitializeTimer();
+            timer.Start();
+        }
+
+        private void InitializeTimer()
+        {
+            // Initialize the timer
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+            elapsedTime = TimeSpan.Zero;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime = elapsedTime.Add(TimeSpan.FromMilliseconds(100)); // Update elapsed time
+            TimerLabel.Content = $"{elapsedTime.Minutes:D2}:{elapsedTime.Seconds:D2}.{elapsedTime.Milliseconds:D3}";
+        }
+
+        private void SaveTime()
+        {
+            // Write the time to a text file
+            string elapsedTimeString = TimerLabel.Content.ToString();
+            string filePath = "FindingCallNumbersTimes.txt"; // Adjust the file path as needed
+            File.AppendAllLines(filePath, new[] { elapsedTimeString });
         }
 
         private void LoadDeweyData()
@@ -103,6 +147,9 @@ namespace LibraryDeweyDecimalApp.MVVM.View
 
         private void InitializeQuizOptions(int level)
         {
+            Level.Content = level;
+            Quiz.Content = quizCount;
+
             Random random = new Random();
             int randomNumber = random.Next(0, 4); // Generates random number between 0 and 3 (inclusive)
 
@@ -157,12 +204,11 @@ namespace LibraryDeweyDecimalApp.MVVM.View
             if (AreStringsAPair(answerPair, selectedOption, randomDescription))
             {
                 // User selected the correct answer
-                var message = "";
+                string? message;
                 if (level < 3)
                 {
                     level++;
                     message = ("Correct! Moving to the next level.");
-                    InitializeQuizOptions(level);
                 }
                 else
                 {
@@ -174,6 +220,8 @@ namespace LibraryDeweyDecimalApp.MVVM.View
 
                 if (quizCount == 10)
                 {
+                    timer.Stop();
+                    SaveTime();
                     MessageBox.Show("Congratulations! You completed 10 quizzes.");
                 }
 

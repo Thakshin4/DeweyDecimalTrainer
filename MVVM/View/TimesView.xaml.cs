@@ -31,6 +31,7 @@ namespace LibraryDeweyDecimalApp.MVVM.View
         {
             string file1Path = "ReplacingBooksTimes.txt";
             string file2Path = "IdentifyingAreasTimes.txt";
+            string file3Path = "FindingCallNumbersTimes.txt";
 
             try
             {
@@ -46,6 +47,13 @@ namespace LibraryDeweyDecimalApp.MVVM.View
                 {
                     string[] lines = File.ReadAllLines(file2Path);
                     IdentifyingAreasTimesList.ItemsSource = lines;
+                }
+
+                // Read the contents of the second text file and load them into ListBox2
+                if (File.Exists(file3Path))
+                {
+                    string[] lines = File.ReadAllLines(file2Path);
+                    FindingCallNumbersList.ItemsSource = lines;
                 }
             }
             catch (Exception ex)

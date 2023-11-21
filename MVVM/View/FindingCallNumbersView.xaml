@@ -7,20 +7,32 @@
              mc:Ignorable="d">
     <Grid>
         <StackPanel VerticalAlignment="Center" Margin="10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <Label Content="Elapsed Time:" Foreground="White"/>
                 <Label x:Name="TimerLabel" Content="00:00:00" Foreground="White"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0">
+                <Label Content="Level:" Foreground="White"/>
+                <Label x:Name="Quiz" Content="1" Foreground="White"/>
+                <Label Content="-" Foreground="White"/>
+                <Label x:Name="Level" Content="1" Foreground="White"/>
+            </StackPanel>
             <!-- Call Numbers List Box -->
-            <TextBlock x:Name="RandomDescriptionLabel" Margin="10" Text="Random Description" FontSize="18" Foreground="White"/>
+            <TextBlock x:Name="RandomDescriptionLabel" 
+                       Margin="10" Text="Description" 
+                       FontSize="18" 
+                       Foreground="White"
+                       Visibility="Hidden"/>
             <Button x:Name="Option1" 
                     Content="Option 1" 
                     Click="CheckAnswer"
+                    Width="260"
                     Foreground="White"
                     Background="#A3333D"
                     Margin="10" 
                     Padding="5"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Visibility="Hidden">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="8"/>
@@ -30,11 +42,13 @@
             <Button x:Name="Option2" 
                     Content="Option 2" 
                     Click="CheckAnswer" 
+                    Width="260"
                     Foreground="White"
                     Background="#A3333D"
                     Margin="10" 
                     Padding="5"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Visibility="Hidden">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="8"/>
@@ -44,11 +58,13 @@
             <Button x:Name="Option3" 
                     Content="Option 3" 
                     Click="CheckAnswer" 
+                    Width="260"
                     Foreground="White"
                     Background="#A3333D"
                     Margin="10" 
                     Padding="5"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Visibility="Hidden">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="8"/>
@@ -58,9 +74,27 @@
             <Button x:Name="Option4" 
                     Content="Option 4" 
                     Click="CheckAnswer" 
+                    Width="260"
                     Foreground="White"
                     Background="#A3333D"
                     Margin="10" 
+                    Padding="5"
+                    BorderThickness="0"
+                    Visibility="Hidden">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <!-- Start Button -->
+            <Button x:Name="StartButton" 
+                    Content="Start" 
+                    Click="StartButton_Click" 
+                    Width="100"
+                    Foreground="White"
+                    Background="#A3333D"
+                    Margin="30" 
                     Padding="5"
                     BorderThickness="0">
                 <Button.Resources>

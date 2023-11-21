@@ -8,7 +8,18 @@ The Dewey Decimal Classification Training App is a user-friendly application des
 
 - **Drag-and-Drop**: Users can engage in interactive sorting by dragging and dropping call numbers to practice getting them in the correct order.
 
+- **Match the Column**: Match Call Numbers to their Descriptions.
+
+- **Quiz**: Explore a Tree of Dewey Decimal Data in a quiz format.
+
 - **Gamification**: The app incorporates a timer to record users' best times for each training exercise, adding a competitive and motivational element to the training process.
+
+## Changelog
+
+### Version 1.3.0
+
+- Added "Finding Call Numbers" feature for advanced users.
+- Minor bugfixes and visual changes.
 
 ## Getting Started
 
